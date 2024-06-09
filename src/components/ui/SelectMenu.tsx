@@ -1,17 +1,17 @@
-import React from 'react';
+// import React from 'react';
 
-type SelectOptions = {
-    value: string;
-    label: string;
-};
+// type SelectOptions = {
+//     value: string;
+//     label: string;
+// };
 
-type SelectMenuProps = {
-    options: SelectOptions[];
-    value?: SelectOptions;
-    onChange: (value?: SelectOptions) => void;
-}
+// type SelectMenuProps = {
+//     options: SelectOptions[];
+//     value?: SelectOptions;
+//     onChange: (value?: SelectOptions) => void;
+// }
 
-export default function SelectMenu({ value, options, onChange }: SelectMenuProps) {
+export default function SelectMenu() {
   return (
     <div>
       
