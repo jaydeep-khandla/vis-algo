@@ -66,6 +66,7 @@ export default function SortingArray() {
 
   // Function to trigger bubble sort algorithm
   function bubbleSort(): void {
+    disableButtons();
     let swap = 0;
     // comp = 0;
     const start = performance.now();
@@ -93,12 +94,13 @@ export default function SortingArray() {
     }
     console.log("swap: ", swap / 2);
     console.log("comp: ", comp / 2);
-    barRefs.current.forEach((bar) => {
-      setTimeout(() => {
+    setTimeout(() => {
+      barRefs.current.forEach((bar) => {
         bar.style.backgroundColor = "green";
-        setRunTime(time);
-      }, animations.length * delay);
-    });
+      });
+      setRunTime(time);
+      disableButtons();
+    }, animations.length * delay);
   }
 
   // Function to trigger merge sort algorithm
@@ -131,9 +133,9 @@ export default function SortingArray() {
         // Calculate and set the runtime after all animations are complete
         bar.style.backgroundColor = "green";
         bar.style.transition = "background-color 0.5s";
-        });
-        setRunTime(time);
-        disableButtons();
+      });
+      setRunTime(time);
+      disableButtons();
     }, animations.length * delay);
   }
 
