@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { getRandomInt } from "../lib/algorithms/utils";
 import { getMergeSortAnimations } from "../lib/algorithms/sortingAlgos/mergeSortAlgo";
 import { getBubbleSortAnimations } from "../lib/algorithms/sortingAlgos/bubbleSortAlgo";
 
@@ -12,12 +13,6 @@ type ElementsRefObject = {
   quickSortButton?: HTMLButtonElement | null;
   heapSortButton?: HTMLButtonElement | null;
 };
-
-// Function to get a random integer between two values
-// From https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
-function getRandomInt(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 // Function to create an array of random numbers
 const createArray = (ele: number): number[] => {

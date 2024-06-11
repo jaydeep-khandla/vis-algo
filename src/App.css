@@ -20,7 +20,7 @@ input[type="range"]:focus {
 }
 
 input[type="range"]:disabled {
-  background-color: red;
+  background-color: #F12F2F;
 }
 
 

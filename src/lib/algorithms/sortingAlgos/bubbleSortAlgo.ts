@@ -20,9 +20,7 @@ function bubbleSortHelper(array: number[], animations: Animation[]) {
         // We swap the values at index j and j+1.
         animations.push([j, array[j + 1], true]);
         animations.push([j + 1, array[j], true]);
-        const temp = array[j];
-        array[j] = array[j + 1];
-        array[j + 1] = temp;
+        [array[j], array[j + 1]] = [array[j + 1], array[j]];
         flag = true;
       }
     }
