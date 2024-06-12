@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { getRandomInt } from "../lib/algorithms/utils";
 import { getMergeSortAnimations } from "../lib/algorithms/sortingAlgos/mergeSortAlgo";
 import { getBubbleSortAnimations } from "../lib/algorithms/sortingAlgos/bubbleSortAlgo";
+import { getQuickSortAnimations } from "../lib/algorithms/sortingAlgos/quickSortAlgo";
 
 // Interface for the ElementsRefObject
 type ElementsRefObject = {
@@ -135,7 +136,43 @@ export default function SortingArray() {
   }
 
   // Function to trigger quick sort algorithm
-  function quickSort(): void {}
+  function quickSort(): void {
+    disableButtons();
+    let swap = 0;
+    // comp = 0;
+    const start = performance.now();
+    const animations = getQuickSortAnimations(state);
+    const end = performance.now();
+    const time = end - start;
+    for (let i = 0; i < animations.length; i++) {
+      const isColorChange = animations[i].length === 2;
+      if (isColorChange) {
+        setComp((prev) => prev++);
+        const [barOneIdx, barTwoIdx] = animations[i];
+        const color = i % 2 === 0 ? "green" : "black";
+        setTimeout(() => {
+          barRefs.current[barOneIdx].style.backgroundColor = color;
+          barRefs.current[barTwoIdx].style.backgroundColor = color;
+        }, i * delay);
+      } else {
+        swap++;
+        setTimeout(() => {
+          const [barOneIdx, newHeight] = animations[i];
+          const barOneStyle = barRefs.current[barOneIdx].style;
+          barOneStyle.height = `${newHeight}px`;
+        }, i * delay);
+      }
+    }
+    console.log("swap: ", swap / 2);
+    console.log("comp: ", comp / 2);
+    setTimeout(() => {
+      barRefs.current.forEach((bar) => {
+        bar.style.backgroundColor = "green";
+      });
+      setRunTime(time);
+      disableButtons();
+    }, animations.length * delay);
+  }
 
   // Function to trigger heap sort algorithm
   function heapSort(): void {}

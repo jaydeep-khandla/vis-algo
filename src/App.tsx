@@ -1,6 +1,6 @@
 import "./App.css";
 import SortingArray from "./components/SortingArray";
-import PathFinding from "./components/PathFinding";
+// import PathFinding from "./components/PathFinding";
 
 function App() {
   return (
