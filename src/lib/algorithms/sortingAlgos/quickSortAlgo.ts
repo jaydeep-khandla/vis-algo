@@ -1,4 +1,4 @@
-type Animation = [number, number] | [number, number, boolean];
+import { Animation } from "../utils";
 
 export function getQuickSortAnimations(array: number[]): Animation[] {
   const animations: Animation[] = [];

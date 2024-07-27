@@ -3,6 +3,7 @@ import { getRandomInt } from "../lib/algorithms/utils";
 import { getMergeSortAnimations } from "../lib/algorithms/sortingAlgos/mergeSortAlgo";
 import { getBubbleSortAnimations } from "../lib/algorithms/sortingAlgos/bubbleSortAlgo";
 import { getQuickSortAnimations } from "../lib/algorithms/sortingAlgos/quickSortAlgo";
+import SelectMenu from "./ui/SelectMenu";
 
 // Interface for the ElementsRefObject
 type ElementsRefObject = {
@@ -39,6 +40,8 @@ export default function SortingArray() {
     setState(createArray(elements));
   }, [elements]);
 
+  useEffect(() => console.log(comp), [comp]);
+
   // Function to disable all buttons
   const disableButtons = (): void => {
     Object.values(elementRefs.current).forEach((el) => {
@@ -63,8 +66,6 @@ export default function SortingArray() {
   // Function to trigger bubble sort algorithm
   function bubbleSort(): void {
     disableButtons();
-    let swap = 0;
-    // comp = 0;
     const start = performance.now();
     const animations = getBubbleSortAnimations(state);
     const end = performance.now();
@@ -72,7 +73,7 @@ export default function SortingArray() {
     for (let i = 0; i < animations.length; i++) {
       const isColorChange = animations[i].length === 2;
       if (isColorChange) {
-        setComp((prev) => prev++);
+        setComp((prev) => prev + 1);
         const [barOneIdx, barTwoIdx] = animations[i];
         const color = i % 2 === 0 ? "green" : "black";
         setTimeout(() => {
@@ -80,7 +81,6 @@ export default function SortingArray() {
           barRefs.current[barTwoIdx].style.backgroundColor = color;
         }, i * delay);
       } else {
-        swap++;
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = barRefs.current[barOneIdx].style;
@@ -88,8 +88,6 @@ export default function SortingArray() {
         }, i * delay);
       }
     }
-    console.log("swap: ", swap / 2);
-    console.log("comp: ", comp / 2);
     setTimeout(() => {
       barRefs.current.forEach((bar) => {
         bar.style.backgroundColor = "green";
@@ -138,8 +136,6 @@ export default function SortingArray() {
   // Function to trigger quick sort algorithm
   function quickSort(): void {
     disableButtons();
-    let swap = 0;
-    // comp = 0;
     const start = performance.now();
     const animations = getQuickSortAnimations(state);
     const end = performance.now();
@@ -147,7 +143,7 @@ export default function SortingArray() {
     for (let i = 0; i < animations.length; i++) {
       const isColorChange = animations[i].length === 2;
       if (isColorChange) {
-        setComp((prev) => prev++);
+        setComp((prev) => prev + 1);
         const [barOneIdx, barTwoIdx] = animations[i];
         const color = i % 2 === 0 ? "green" : "black";
         setTimeout(() => {
@@ -155,7 +151,6 @@ export default function SortingArray() {
           barRefs.current[barTwoIdx].style.backgroundColor = color;
         }, i * delay);
       } else {
-        swap++;
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = barRefs.current[barOneIdx].style;
@@ -163,8 +158,6 @@ export default function SortingArray() {
         }, i * delay);
       }
     }
-    console.log("swap: ", swap / 2);
-    console.log("comp: ", comp / 2);
     setTimeout(() => {
       barRefs.current.forEach((bar) => {
         bar.style.backgroundColor = "green";
@@ -176,6 +169,13 @@ export default function SortingArray() {
 
   // Function to trigger heap sort algorithm
   function heapSort(): void {}
+
+  const options = [
+    { value: "bubbleSort", label: "Bubble Sort" },
+    { value: "mergeSort", label: "Merge Sort" },
+    { value: "quickSort", label: "Quick Sort" },
+    { value: "heapSort", label: "Heap Sort" },
+  ];
 
   return (
     <main className="w-fit flex flex-col gap-8 px-10 pb-10 mx-auto border-2 border-black">
@@ -275,6 +275,7 @@ export default function SortingArray() {
         >
           Test Algorithms
         </button>
+        {/* <SelectMenu options={options} /> */}
       </div>
     </main>
   );

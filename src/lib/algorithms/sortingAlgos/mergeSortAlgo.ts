@@ -1,4 +1,4 @@
-type Animation = [number, number];
+import { Animation } from "../utils";
 
 export function getMergeSortAnimations(array: number[]): Animation[] {
   const animations: Animation[] = [];
