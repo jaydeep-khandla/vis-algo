@@ -3,7 +3,7 @@ import { getRandomInt } from "../lib/algorithms/utils";
 import { getMergeSortAnimations } from "../lib/algorithms/sortingAlgos/mergeSortAlgo";
 import { getBubbleSortAnimations } from "../lib/algorithms/sortingAlgos/bubbleSortAlgo";
 import { getQuickSortAnimations } from "../lib/algorithms/sortingAlgos/quickSortAlgo";
-import SelectMenu from "./ui/SelectMenu";
+// import SelectMenu from "./ui/SelectMenu";
 
 // Interface for the ElementsRefObject
 type ElementsRefObject = {
@@ -170,12 +170,12 @@ export default function SortingArray() {
   // Function to trigger heap sort algorithm
   function heapSort(): void {}
 
-  const options = [
-    { value: "bubbleSort", label: "Bubble Sort" },
-    { value: "mergeSort", label: "Merge Sort" },
-    { value: "quickSort", label: "Quick Sort" },
-    { value: "heapSort", label: "Heap Sort" },
-  ];
+  // const options = [
+  //   { value: "bubbleSort", label: "Bubble Sort" },
+  //   { value: "mergeSort", label: "Merge Sort" },
+  //   { value: "quickSort", label: "Quick Sort" },
+  //   { value: "heapSort", label: "Heap Sort" },
+  // ];
 
   return (
     <main className="w-fit flex flex-col gap-8 px-10 pb-10 mx-auto border-2 border-black">

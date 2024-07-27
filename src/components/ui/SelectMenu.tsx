@@ -11,11 +11,7 @@ type SelectMenuProps = {
   onChange?: (value?: SelectOptions) => void;
 };
 
-export default function SelectMenu({
-  options,
-  value,
-  onChange,
-}: SelectMenuProps) {
+export default function SelectMenu({ options }: SelectMenuProps) {
   return (
     <div className="bg-[#E39828] flex gap-1 cursor-pointer font-mono font-black text-lg px-[1.3em] py-[0.6em] border-2 border-solid border-[#0B3F30] hover:translate-x-[-0.05em] hover:translate-y-[-0.05em] hover:shadow-[0.2em_0.2em] active:translate-x-[0.05em] active:translate-y-[0.05em] active:shadow-[0.1em_0.1em] transition-all">
       <button>&times;</button>
